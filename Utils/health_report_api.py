@@ -1,6 +1,6 @@
 import datetime
 import json
-
+import Utils.timeUtil as timeUtil
 from .login import login_xmuxg
 
 
@@ -39,9 +39,9 @@ def health_report(USERNAME, PASSWORD, N):
                  "value": {"stringValue": "是"}, "hide": false, "readonly": false}
             ], "playerId": "owner"}
             resp = s.post(form_url, data=json.dumps(form_data), headers=Headers)
-            print(resp.content.decode('utf-8'))
+            # print(resp.content.decode('utf-8'))
         # print(resp.content.decode('utf-8'))
-        print('打卡完毕!')
+        print(timeUtil.get_current_time()+ '打卡完毕!')
         return 'Succeeded'
     except Exception as e:
         print(e)
